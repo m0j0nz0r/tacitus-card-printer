@@ -1,5 +1,5 @@
 {
-  "name": ".",
+  "name": "tacitus-card-printer",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
