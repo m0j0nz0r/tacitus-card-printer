@@ -1,0 +1,39 @@
+<div class="actions">
+  <input
+    type="file"
+    #fileInput
+    (change)="onFileSelected($event)"
+    style="display: none"
+    accept="image/png, image/jpeg"
+    multiple />
+  <button mat-raised-button color="primary" (click)="fileInput.click()">
+    <mat-icon>attach_file</mat-icon>
+    Upload File(s)
+  </button>
+  @if (files.length > 0) {
+  <button mat-raised-button color="accent" (click)="createPdf()">
+    <mat-icon>picture_as_pdf</mat-icon>
+    Create PDF
+  </button>
+  }
+</div>
+@if(files.length > 0) {
+<div class="pages-container">
+  @for (page of pages(); track $index; let pageIndex = $index) {
+  <mat-grid-list cols="3" rowHeight="5:7" class="page-grid">
+    @for (url of page.imageUrls; track $index; let imageIndex = $index) {
+    <mat-grid-tile>
+      <img [src]="url" class="card-image" alt="Card image">
+      <button mat-icon-button class="remove-button" (click)="removeImage(pageIndex, imageIndex)">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-grid-tile>
+    }
+  </mat-grid-list>
+  @if ($index < pages().length - 1) {
+  <mat-divider></mat-divider>
+  }
+  }
+</div>
+}
+

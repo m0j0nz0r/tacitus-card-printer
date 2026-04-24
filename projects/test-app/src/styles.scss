@@ -1,0 +1,30 @@
+/* Import Angular Material functions and mixins */
+@use '@angular/material' as mat;
+
+/* Include core styles required for all components */
+@include mat.core();
+
+/* Define your theme using the Material 3 system */
+$my-theme: mat.define-theme((
+  color: (
+    primary: mat.$azure-palette,
+    tertiary: mat.$blue-palette,
+  ),
+  typography: (
+    brand-family: 'Roboto, sans-serif',
+    plain-family: 'Roboto, sans-serif',
+  ),
+  density: (scale: 0), // Options: 0, -1, -2, -3, -4
+));
+
+/* Apply the theme to the entire application */
+html {
+  @include mat.all-component-themes($my-theme);
+}
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  background: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
