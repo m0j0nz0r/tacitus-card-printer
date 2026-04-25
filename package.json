@@ -1,12 +1,21 @@
 {
   "name": "tacitus-card-printer",
   "version": "0.0.0",
+  "main": "dist/card-printer/fesm2022/card-printer.mjs",
+  "typings": "dist/card-printer/types/card-printer.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/card-printer/types/card-printer.d.ts",
+      "default": "./dist/card-printer/fesm2022/card-printer.mjs"
+    }
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "prepare": "ng build card-printer --configuration production"
   },
   "private": true,
   "packageManager": "npm@11.11.0",
